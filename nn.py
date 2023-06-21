@@ -34,8 +34,8 @@ def blend_loss(data: Tensor, model: nn.Module) -> Tensor:
     out = model(noised_data, alpha)['sample']
     return torch.sum((out - (data - noise))**2)
 
-def train_step(optimizer: Optimizer, loss: Tensor, iter: int = 0) -> int:
+def train_step(optimizer: Optimizer, loss: Tensor, nb_iter: int = 0) -> int:
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
-    return iter + 1
+    return nb_iter + 1
