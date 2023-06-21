@@ -6,6 +6,7 @@ from torch import nn, Tensor
 from torch.optim import Optimizer
 
 # pylint: disable=no-member
+# pylint: disable=invalid-name
 @torch.no_grad()
 def deblend(io: Tensor, model: nn.Module, nb_step: int = 128) -> Tensor:
     """ in place sample
@@ -34,8 +35,3 @@ def blend_loss(data: Tensor, model: nn.Module) -> Tensor:
     out = model(noised_data, alpha)['sample']
     return torch.sum((out - (data - noise))**2)
 
-def train_step(optimizer: Optimizer, loss: Tensor, nb_iter: int = 0) -> int:
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-    return nb_iter + 1
