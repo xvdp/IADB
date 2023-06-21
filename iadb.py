@@ -30,11 +30,9 @@ def parse_args():
     parser.add_argument('-s', '--save_every', type=int, default=1000, help='save every [] iters')
     parser.add_argument('-c', '--checkpoint', type=str, default='', help='checkpoint')
     parser.add_argument('-m', '--max_samples', type=int, default=16, help='max_saples')
-    parser.add_argument('-t', '--test',required=False, action='store_true')
-    parser.set_defaults(demo=False)
-
-    args = parser.parse_args()
-    return args
+    parser.add_argument('-t', '--test', required=False, action='store_true')
+    parser.set_defaults(test=False)
+    return parser.parse_args()
 
 
 def get_model(checkpoint=''):

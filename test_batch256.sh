@@ -3,3 +3,4 @@
 # test pretrained - requires trained checkpoint
 # 
 python iadb.py /home/data -r /home/weights -b 256 -i 64 -e 100 -n iadb_256 -c celeba_256_00063000.ckpt -t 
+#python iadb.py /home/data -r /home/weights -b 64 -i 64 -e 100 -n iadb_64 -c celeba_64_00254200.ckpt -t 
