@@ -34,7 +34,7 @@ def blend_loss(model: nn.Module, data: Tensor, noise: Optional[Tensor] = None) -
     data = (data * 2) - 1 # center to zero
     noise = make_noise(data, noise)
     alpha = torch.rand(len(data), dtype=data.dtype, device=data.device)
-    noised_data = torch.lerp(noise, data, alpha.visew(-1, *[1]*(data.ndim - 1)))
+    noised_data = torch.lerp(noise, data, alpha.view(-1, *[1]*(data.ndim - 1)))
     out = model(noised_data, alpha)['sample']
     return torch.sum((out - (data - noise))**2)
 
